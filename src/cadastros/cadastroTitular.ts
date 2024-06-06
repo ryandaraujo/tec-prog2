@@ -1,6 +1,7 @@
 import { TipoDocumento } from "../enumeracoes/tipoDocumento";
 import Cadastro from "../interfaces/cadastrar";
 import Entrada from "../io/entrada";
+import Atlantis from "../modelos/atlantis";
 import Cliente from "../modelos/cliente";
 import Documento from "../modelos/documento";
 import Endereco from "../modelos/endereco";
@@ -9,6 +10,7 @@ import Telefone from "../modelos/telefone";
 export default class CadastroTitular extends Cadastro {
 
     public cadastrar(): void {
+        let atlantis = new Atlantis()
         let entrada = new Entrada()
         let novoCliente = new Cliente()
         novoCliente.nome = entrada.receberTexto("Nome do titular")
@@ -42,6 +44,7 @@ export default class CadastroTitular extends Cadastro {
         novoTelefone.numero = entrada.receberTexto("Número do telefone")
         novoCliente.telefones.push(novoTelefone)
 
+        atlantis.adicionarCliente(novoCliente)
         console.log("Cadastro concluído :)");
     }
 }
