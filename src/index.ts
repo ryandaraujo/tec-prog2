@@ -56,11 +56,11 @@ while (execucao) {
             break;
         case 1:
             let cadastrarTitular = new CadastroTitular();
-            cadastrarTitular.cadastrar();
+            cadastrarTitular.cadastrar(atlantis.getClientes());
             break;
         case 2:
             let cadastrarDependente = new CadastroDependente();
-            cadastrarDependente.cadastrar();
+            cadastrarDependente.cadastrar(atlantis.getClientes());
             break;
         case 3:
             console.log(atlantis.getClientes());

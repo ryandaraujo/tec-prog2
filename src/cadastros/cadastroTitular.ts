@@ -9,8 +9,7 @@ import Telefone from "../modelos/telefone";
 
 export default class CadastroTitular extends Cadastro {
 
-    public cadastrar(): void {
-        let atlantis = new Atlantis()
+    public cadastrar(clientes: Array<Cliente>): void {
         let entrada = new Entrada()
         let novoCliente = new Cliente()
         novoCliente.nome = entrada.receberTexto("Nome do titular")
@@ -44,7 +43,7 @@ export default class CadastroTitular extends Cadastro {
         novoTelefone.numero = entrada.receberTexto("Número do telefone")
         novoCliente.telefones.push(novoTelefone)
 
-        atlantis.adicionarCliente(novoCliente)
+        clientes.push(novoCliente);
         console.log("Cadastro concluído :)");
     }
 }

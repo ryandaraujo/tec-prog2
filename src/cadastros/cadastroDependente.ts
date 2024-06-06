@@ -8,8 +8,7 @@ import Endereco from "../modelos/endereco"
 
 export default class CadastroDependente extends Cadastro {
 
-    public cadastrar(): void {
-        let atlantis = new Atlantis();
+    public cadastrar(clientes: Array<Cliente>): void {
         let entrada = new Entrada();
         let novoCliente = new Cliente();
         novoCliente.nome = entrada.receberTexto("Nome do dependente");
@@ -29,7 +28,7 @@ export default class CadastroDependente extends Cadastro {
         }
         novoCliente.documentos.push(novoDocumento);
         let nomeTitular = entrada.receberTexto("Digite o nome social do titular");
-        let listaClientes = atlantis.getClientes();
+        let listaClientes = clientes;
         let titular = listaClientes.find(cliente => cliente.nomeSocial == nomeTitular);
         if (titular) {
             novoCliente.endereco = titular.endereco.clonar() as Endereco;
@@ -39,8 +38,7 @@ export default class CadastroDependente extends Cadastro {
         } else {
             console.log("TITULAR NÃO ENCONTRADO!");
         }
-        novoCliente.telefones.push()
-        atlantis.adicionarCliente(novoCliente);
+        clientes.push(novoCliente)
         console.log("Cadastro concluído :)");
     }
 }
