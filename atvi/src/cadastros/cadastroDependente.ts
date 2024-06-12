@@ -5,6 +5,7 @@ import Atlantis from "../modelos/atlantis"
 import Cliente from "../modelos/cliente"
 import Documento from "../modelos/documento"
 import Endereco from "../modelos/endereco"
+import Telefone from "../modelos/telefone"
 
 export default class CadastroDependente extends Cadastro {
 
@@ -32,9 +33,7 @@ export default class CadastroDependente extends Cadastro {
         let titular = listaClientes.find(cliente => cliente.nomeSocial == nomeTitular);
         if (titular) {
             novoCliente.endereco = titular.endereco.clonar() as Endereco;
-            titular.telefones.forEach(telefone => {
-                novoCliente.telefones.push(telefone);
-            });
+            novoCliente.telefones = titular.telefones.map(telefone => telefone.clonar()) as Telefone[]
         } else {
             console.log("TITULAR NÃO ENCONTRADO!");
         }
